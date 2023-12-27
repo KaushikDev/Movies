@@ -11,7 +11,7 @@ const SearchMovie = () => {
   const handleMovieSearch = async e => {
     e.preventDefault();
    await  axios
-      .get(`${BASE_URL}/?apikey=${MOVIE_API_KEY}&s=${movieTitleToSearchFor}&page=1`)
+      .get(`${BASE_URL}/?apikey=${MOVIE_API_KEY}&s=${movieTitleToSearchFor}&type=movie&page=1`)
       .then((res) => searchResults(res.data.Search));
   }
 

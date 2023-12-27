@@ -9,6 +9,8 @@ const moviesReducer = (state, action) => {
   switch (action.type) {
     case "searched":
       return { ...state, movies: action.payload || []};
+      case "current":
+        return { ...state, currentMovie: action.payload || []};
     case "add":
       return { ...state, movies: action.payload };
     case "remove":

@@ -9,6 +9,10 @@ export const StoreProvider = ({ children }) => {
   const searchResults = (movies) => {
     dispatch({ type: "searched", payload: movies });
   };
+
+  const currentMovie = (movieId) => {
+    dispatch({type: "current", payload: movieId});
+  }
   const addAMovie = (movie) => {
     const updatedMovies = state.movies;
     updatedMovies.push(movie);
@@ -20,6 +24,6 @@ export const StoreProvider = ({ children }) => {
   };
 
   return (
-    <StoreContext.Provider value={{state, searchResults, addAMovie}}>{children}</StoreContext.Provider>
+    <StoreContext.Provider value={{state, searchResults, addAMovie, currentMovie}}>{children}</StoreContext.Provider>
   );
 };

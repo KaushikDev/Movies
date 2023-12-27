@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import MovieCard from '../movieCard/movieCard';
 import { StoreContext } from "../../common/store/Store";
-
+import "./movieListing.scss";
 
 const MovieListing = () => {
   const [movieResults, setMovieResults] = useState([]);
@@ -14,7 +14,7 @@ const MovieListing = () => {
   }, [movies])
 
   return (
-    <div className="movieListingContainer">
+    <div className="movieListContainer">
       {movieResults && movieResults.length ? movieResults.map((movie, index) => <MovieCard movie={movie} key={index}/>) : "no search results yet!!"}
  
     </div>
