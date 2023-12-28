@@ -5,6 +5,8 @@ import "./App.scss";
 import Home from "./pages/home/home";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
+import Watchlist from "./components/watchlist/watchlist";
+import Favorites from "./components/favorites/favorites";
 import MovieDetail from "./pages/movieDetail/movieDetail";
 import PageNotFound from "./pages/pageNotFound/pageNotFound";
 import { StoreProvider } from "./common/store/Store";
@@ -18,6 +20,8 @@ function App() {
           <Routes>
             <Route path="/" Component={Home} />
             <Route path="/movie/:imdbID" Component={MovieDetail} />
+            <Route path="/watchlist" Component={Watchlist} />
+            <Route path="/favorites" Component={Favorites} />
             <Route path="*" Component={PageNotFound} />
           </Routes>
           <Footer />

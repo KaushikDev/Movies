@@ -6,7 +6,6 @@ import "./movieListing.scss";
 const MovieListing = () => {
   const [movieResults, setMovieResults] = useState([]);
   const {state} = useContext(StoreContext);
-  console.log(state)
   const {movies} = state;
 
   useEffect(()=> {

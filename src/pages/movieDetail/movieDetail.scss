@@ -1,0 +1,51 @@
+.movieDetailContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+.moviePoster{
+    border: 10px solid rgba(0,0,0, 1);
+    box-shadow: 4px 4px 4px rgba(0,0,0, 0.25);
+    width: 500px;
+    height: 700px;
+    border-radius: 5px;
+    background-size: cover;
+}
+
+.movieDetails{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0, 1);
+    border-radius: 5px;
+    flex: 1;
+    align-self: stretch;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    
+    .movieDetails__title{
+        font-weight: 700;
+    }
+    .movieDetails__genre{
+        font-style: italic;
+        font-weight: 700;
+    }
+    .movieDetails__collection{
+
+    }
+    .movieDetails__director{
+
+    }
+    .movieDetails__rating, .movieDetails__year{
+
+    }
+    .movieDetails__awards{
+
+    }
+    .movieDetails__cast{
+    }
+
+}

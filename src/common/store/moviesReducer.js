@@ -2,7 +2,7 @@ export const initialState = {
   movies: [],
   favorites: [],
   watchlist: [],
-  currentMovie: 0,
+  currentMovie: {},
 };
 
 const moviesReducer = (state, action) => {
