@@ -1,11 +1,19 @@
-import React from 'react';
-import MovieListing from '../../components/movieListing/movieListing';
-import SearchMovie from '../../components/searchMovie/searchMovie';
+import React, { useContext } from "react";
+import MovieListing from "../../components/movieListing/movieListing";
+import SearchMovie from "../../components/searchMovie/searchMovie";
+import { StoreContext } from "../../common/store/Store";
 
-const Home = () => <div>
-    <h1>Search and Build Your Own Movies Database</h1>
-    <SearchMovie />
-    <MovieListing />
-</div>
+const Home = () => {
+  const { state } = useContext(StoreContext);
+  const { movies } = state;
+
+  return (
+    <div>
+      <h1>Your Personal Movie Library</h1>
+      <SearchMovie />
+      <MovieListing movies={movies} />
+    </div>
+  );
+};
 
 export default Home;

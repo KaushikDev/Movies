@@ -1,21 +1,14 @@
-import React, {useContext, useEffect, useState} from "react";
+import React from "react";
 import MovieCard from '../movieCard/movieCard';
-import { StoreContext } from "../../common/store/Store";
+
 import "./movieListing.scss";
 
-const MovieListing = () => {
-  const [movieResults, setMovieResults] = useState([]);
-  const {state} = useContext(StoreContext);
-  const {movies} = state;
-
-  useEffect(()=> {
-   setMovieResults(movies);
-  }, [movies])
+const MovieListing = ({movies}) => {
 
   return (
     <div className="movieListContainer">
-      {movieResults && movieResults.length ? movieResults.map((movie, index) => <MovieCard movie={movie} key={index}/>) : "no search results yet!!"}
- 
+      {movies && movies.length ? movies.map((movie, index) => <MovieCard movie={movie} key={index}/>) : "There are no movies yet!!"}
+    
     </div>
   );
 };

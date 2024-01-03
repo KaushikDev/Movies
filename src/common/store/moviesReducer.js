@@ -11,10 +11,10 @@ const moviesReducer = (state, action) => {
       return { ...state, movies: action.payload || []};
       case "current":
         return { ...state, currentMovie: action.payload || []};
-    case "add":
-      return { ...state, movies: action.payload };
-    case "remove":
-      return { ...state, movies: action.payload };
+    case "addToWatchlist":
+      return { ...state, watchlist: action.payload || [] };
+    case "addToFavorites":
+      return { ...state, favorites: action.payload || []};
     default:
       return state ;
   }

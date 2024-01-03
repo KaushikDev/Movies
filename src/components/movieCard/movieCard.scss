@@ -1,20 +1,24 @@
-.movieCard{
-    position: relative;
-    background-size: cover;
-    height: 200px;
-    width: 200px;
+.movieCardContainer{
     padding: 1em;
     margin: 1em;
-    border: 2px solid rgba(0,0,0, 0.5);
-    box-shadow: 2px 2px 2px rgba(0,0,0, 0.25);
-
+    border: 10px solid rgba(0,0,0, 0.5);
+    box-shadow: 4px 4px 2px rgba(0,0,0, 0.25);
     &:hover{
-        box-shadow: 8px 8px 4px rgba(0,0,0, 0.5);
+        box-shadow: 8px 8px 4px rgba(0,0,0, 1);
         cursor: pointer;
         .movieCard__sideActionPanel{
             display: flex;
         }
     }
+}
+.movieCard{
+    position: relative;
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+
+
+
 }
 
 .movieCard__sideActionPanel{
