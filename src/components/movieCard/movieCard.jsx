@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect , useState } from "react";
 import "./movieCard.scss";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../common/store/Store";
@@ -8,7 +8,17 @@ import { BASE_URL, MOVIE_API_KEY } from "../../common/apis/movieApi";
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const { Poster, imdbID } = movie;
-  const { addMovieToWatchlist } = useContext(StoreContext);
+  const { state, addMovieToWatchlist } = useContext(StoreContext);
+  const { watchlist, favorites } = state;
+  console.log("watchlist : ", watchlist);
+  console.log("favorites : ", favorites);
+
+  const isAvailableinWatchlist = () =>
+    watchlist &&
+    watchlist.length &&
+    watchlist.filter((item) => item.imdbID === imdbID).length
+      ? true
+      : false;
 
   const setCurrentMovie = (movieId) => {
     navigate(`/movie/${movieId}`);
@@ -16,9 +26,6 @@ const MovieCard = ({ movie }) => {
 
   const handleAddMovieToWatchlist = async (e, id) => {
     e.stopPropagation();
-    document.querySelector(
-      `#addToWatchlistBtn_${id}`
-    ).innerHTML = `<i className="fa-solid fa-check"></i>`;
     await axios
       .get(`${BASE_URL}/?apikey=${MOVIE_API_KEY}&i=${id}`)
       .then((res) =>
@@ -28,11 +35,18 @@ const MovieCard = ({ movie }) => {
         console.log(err);
       });
   };
+
   return (
     <div className="movieCardContainer">
       <div
         className="movieCard"
-        style={{ backgroundImage: `url(${Poster})` }}
+        style={{
+          backgroundImage: `url(${
+            Poster !== "N/A"
+              ? Poster
+              : "https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+          })`,
+        }}
         onClick={() => setCurrentMovie(imdbID)}
       >
         <div className="movieCard__sideActionPanel">
@@ -40,9 +54,13 @@ const MovieCard = ({ movie }) => {
             <button
               className="btn__addToWatchlist"
               id={`addToWatchlistBtn_${imdbID}`}
-              onClick={(e) => handleAddMovieToWatchlist(e, imdbID)}
+              onClick={(e) => isAvailableinWatchlist() ? e.stopPropagation() : handleAddMovieToWatchlist(e, imdbID)}
             >
-              <i className="fa-solid fa-plus"></i>
+              {isAvailableinWatchlist() ? (
+                <i className="fa-solid fa-check"></i>
+              ) : (
+                <i className="fa-solid fa-plus"></i>
+              )}
             </button>
           </div>
           <div className="actionPanel__icon favorite">
