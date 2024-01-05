@@ -1,40 +1,25 @@
-import React, { useContext, useEffect , useState } from "react";
+import React, { useContext } from "react";
 import "./movieCard.scss";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../common/store/Store";
-import axios from "axios";
-import { BASE_URL, MOVIE_API_KEY } from "../../common/apis/movieApi";
+import {
+  checkIdExistsInArray,
+  handleAddMovieToList,
+  handleRemoveMovieFromList,
+} from "../../common/utils/utils";
+import { defaultImage } from "../../common/constants/constants";
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const { Poster, imdbID } = movie;
-  const { state, addMovieToWatchlist } = useContext(StoreContext);
+  const {
+    state,
+    addMovieToWatchlist,
+    removeMovieFromWatchlist,
+    addMovieToFavorites,
+    removeMovieFromFavorites,
+  } = useContext(StoreContext);
   const { watchlist, favorites } = state;
-  console.log("watchlist : ", watchlist);
-  console.log("favorites : ", favorites);
-
-  const isAvailableinWatchlist = () =>
-    watchlist &&
-    watchlist.length &&
-    watchlist.filter((item) => item.imdbID === imdbID).length
-      ? true
-      : false;
-
-  const setCurrentMovie = (movieId) => {
-    navigate(`/movie/${movieId}`);
-  };
-
-  const handleAddMovieToWatchlist = async (e, id) => {
-    e.stopPropagation();
-    await axios
-      .get(`${BASE_URL}/?apikey=${MOVIE_API_KEY}&i=${id}`)
-      .then((res) =>
-        res.data.Response === "True" ? addMovieToWatchlist(res.data) : null
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div className="movieCardContainer">
@@ -44,19 +29,28 @@ const MovieCard = ({ movie }) => {
           backgroundImage: `url(${
             Poster !== "N/A"
               ? Poster
-              : "https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+              : defaultImage
           })`,
         }}
-        onClick={() => setCurrentMovie(imdbID)}
+        onClick={() => navigate(`/movie/${imdbID}`)}
       >
         <div className="movieCard__sideActionPanel">
           <div className="actionPanel__icon watchlist">
             <button
               className="btn__addToWatchlist"
               id={`addToWatchlistBtn_${imdbID}`}
-              onClick={(e) => isAvailableinWatchlist() ? e.stopPropagation() : handleAddMovieToWatchlist(e, imdbID)}
+              onClick={(e) =>
+                checkIdExistsInArray(watchlist, imdbID)
+                  ? handleRemoveMovieFromList(
+                      e,
+                      imdbID,
+                      watchlist,
+                      removeMovieFromWatchlist
+                    )
+                  : handleAddMovieToList(e, movie, addMovieToWatchlist)
+              }
             >
-              {isAvailableinWatchlist() ? (
+              {checkIdExistsInArray(watchlist, imdbID) ? (
                 <i className="fa-solid fa-check"></i>
               ) : (
                 <i className="fa-solid fa-plus"></i>
@@ -64,7 +58,26 @@ const MovieCard = ({ movie }) => {
             </button>
           </div>
           <div className="actionPanel__icon favorite">
-            <i className="fa-regular fa-heart"></i>
+            <button
+              className="btn__addToFavorites"
+              id={`addToFavoritesBtn_${imdbID}`}
+              onClick={(e) =>
+                checkIdExistsInArray(favorites, imdbID)
+                  ? handleRemoveMovieFromList(
+                      e,
+                      imdbID,
+                      favorites,
+                      removeMovieFromFavorites
+                    )
+                  : handleAddMovieToList(e, movie, addMovieToFavorites)
+              }
+            >
+              {checkIdExistsInArray(favorites, imdbID) ? (
+                <i className="fa-solid fa-heart"></i>
+              ) : (
+                <i className="fa-regular fa-heart"></i>
+              )}
+            </button>
           </div>
         </div>
       </div>

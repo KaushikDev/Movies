@@ -6,8 +6,8 @@ export const StoreContext = createContext();
 export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(moviesReducer, initialState);
 
-  const searchMovie = (movies) => {
-    dispatch({ type: "searched", payload: movies });
+  const searchMovie = (movies,searchTerm,msg) => {
+    dispatch({ type: "searched", payload: {movies, searchTerm, msg} });
   };
 
   const setCurrentMovie = (movie) => {
@@ -24,6 +24,13 @@ export const StoreProvider = ({ children }) => {
     });
   };
 
+  const removeMovieFromWatchlist = (movies) => {
+    dispatch({
+      type: "removeFromWatchlist",
+      payload: movies,
+    });
+  };
+
   const addMovieToFavorites = (movie) => {
     const updatedFavorites = state.favorites;
     updatedFavorites.push(movie);
@@ -34,6 +41,13 @@ export const StoreProvider = ({ children }) => {
     });
   };
 
+  const removeMovieFromFavorites = (movies) => {
+    dispatch({
+      type: "removeFromFavorites",
+      payload: movies,
+    });
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -41,7 +55,9 @@ export const StoreProvider = ({ children }) => {
         searchMovie,
         setCurrentMovie,
         addMovieToWatchlist,
+        removeMovieFromWatchlist,
         addMovieToFavorites,
+        removeMovieFromFavorites
       }}
     >
       {children}

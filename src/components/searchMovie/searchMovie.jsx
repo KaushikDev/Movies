@@ -5,37 +5,45 @@ import { StoreContext } from "../../common/store/Store";
 
 import "./searchMovie.scss";
 
-const SearchMovie = () => {
+const SearchMovie = ({ searchTerm }) => {
   const [movieTitleToSearchFor, setMovieTitleForSearchFor] = useState("");
   const { searchMovie } = useContext(StoreContext);
 
   const handleMovieSearch = async (e) => {
     e.preventDefault();
+
     await axios
       .get(
         `${BASE_URL}/?apikey=${MOVIE_API_KEY}&s=${movieTitleToSearchFor}&type=movie&page=1`
       )
       .then((res) => {
-        searchMovie(res.data.Search);
+        res.data.Response === "True"
+          ? searchMovie(res.data.Search, movieTitleToSearchFor, "")
+          : searchMovie([], movieTitleToSearchFor, res.data.Error);
         setMovieTitleForSearchFor("");
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-    <form onSubmit={(e) => handleMovieSearch(e)}>
-      <div className="searchForm">
-        <div className="inputSearchField">
-          <label htmlFor="searchField">Search Movie : </label>
-          <input
-            id="searchField"
-            type="text"
-            value={movieTitleToSearchFor}
-            placeholder="search a movie"
-            onChange={(e) => setMovieTitleForSearchFor(e.target.value)}
-          />
+    <>
+      <form onSubmit={(e) => handleMovieSearch(e)}>
+        <div className="searchForm">
+          <div className="inputSearchField">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              id="searchField"
+              type="text"
+              value={movieTitleToSearchFor}
+              placeholder="search a movie"
+              onChange={(e) => setMovieTitleForSearchFor(e.target.value)}
+            />
+            <h5>Previously searched for:</h5>
+            <span>"{searchTerm}"</span>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
 

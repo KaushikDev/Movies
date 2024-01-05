@@ -7,6 +7,6 @@ const Watchlist = () => {
   const { watchlist } = state;
   console.log(watchlist);
 
-  return <MovieListing movies={watchlist} />;
+  return <MovieListing movies={watchlist}  message="You haven't added any movie to your watchlist yet!!"/>;
 };
 export default Watchlist;

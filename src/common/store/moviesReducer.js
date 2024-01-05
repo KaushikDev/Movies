@@ -1,5 +1,9 @@
 export const initialState = {
-  movies: [],
+  search: {
+    movies: [],
+    searchedMovie: "",
+    message: "You haven't searched any movie yet!!",
+  },
   favorites: [],
   watchlist: [],
   currentMovie: {},
@@ -8,15 +12,30 @@ export const initialState = {
 const moviesReducer = (state, action) => {
   switch (action.type) {
     case "searched":
-      return { ...state, movies: action.payload || []};
-      case "current":
-        return { ...state, currentMovie: action.payload || []};
+      return {
+        ...state,
+        search: {
+          movies: action.payload.movies,
+          searchedMovie: action.payload.searchTerm,
+          message: action.payload.msg,
+        } || {
+          movies: [],
+          searchedMovie: "",
+          message: "",
+        },
+      };
+    case "current":
+      return { ...state, currentMovie: action.payload || [] };
     case "addToWatchlist":
       return { ...state, watchlist: action.payload || [] };
+    case "removeFromWatchlist":
+      return { ...state, watchlist: action.payload };
     case "addToFavorites":
-      return { ...state, favorites: action.payload || []};
+      return { ...state, favorites: action.payload || [] };
+    case "removeFromFavorites":
+      return { ...state, favorites: action.payload };
     default:
-      return state ;
+      return state;
   }
 };
 
