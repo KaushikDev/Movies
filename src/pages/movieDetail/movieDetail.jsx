@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../common/store/Store";
 import { BASE_URL, MOVIE_API_KEY } from "../../common/apis/movieApi";
 import { defaultImage } from "../../common/constants/constants";
@@ -25,7 +25,7 @@ const MovieDetail = () => {
         console.log(err);
         setCurrentMovie({});
       });
-  }, [imdbID]);
+  }, [imdbID, setCurrentMovie]);
 
   return (
     <div className="movieDetailContainer">
