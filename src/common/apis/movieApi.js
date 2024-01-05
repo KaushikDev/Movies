@@ -5,4 +5,4 @@ export default axios.create({
 });
 
 export const BASE_URL = "https://www.omdbapi.com";
-export const MOVIE_API_KEY = '3942b4cf';
+export const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
