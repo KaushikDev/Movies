@@ -38,8 +38,8 @@ const SearchMovie = ({ searchTerm }) => {
               placeholder="search a movie"
               onChange={(e) => setMovieTitleForSearchFor(e.target.value)}
             />
-            <h5>Previously searched for:</h5>
-            <span>"{searchTerm}"</span>
+            {searchTerm ? <><h5>Previously searched for:</h5>
+            <span>"{searchTerm}"</span></> : null}
           </div>
         </div>
       </form>

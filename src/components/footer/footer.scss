@@ -1,21 +1,20 @@
-.globalFooter{
-    width: calc(100% - 2em);
-    background: rgba(0,0,0,1);
-    padding: 1em;
-    position: relative;
-    top: calc(65vh);
-    z-index: 99;
-     display: flex;
-align-items: center;
-justify-content: center;
-    color: rgba(255, 255, 255, 1);
-
-    
+.globalFooter {
+  width: calc(100% - 2em);
+  background: rgba(0, 0, 0, 1);
+  padding: 1em;
+  position: absolute;
+  top: auto;
+  bottom: 0 !important;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 1);
 }
 
-.footerlink{
-    cursor: pointer;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: none;
+.footerlink {
+  cursor: pointer;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
 }
