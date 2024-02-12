@@ -1,0 +1,16 @@
+
+Features : 
+- filters(year, plot, type)
+- pagination
+- footer at the bottom
+- save the history in a database/cookies
+- login
+- wishlist by categories?(optional)
+
+
+Issues : 
+- manage the loading state
+- CSS not optimized for lower breakpoints
+- Footer is not at the very bottom of the page
+- [FIXED] previously searched for shows empty quotes on first load
+- movie detail page shows no information when it being loaded
