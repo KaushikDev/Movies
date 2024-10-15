@@ -1,56 +1,78 @@
-.globalHeader{
-     position: sticky;
-     top: 0;
-     z-index: 99;
-    display: flex;
-background: rgba(0,0,0,1);
+.globalHeader {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 1);
 }
 
-.logo-container{
+.logo-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  animation: App-logo-spin infinite 10s linear;
+  .logo-link {
+    background: rgba(0, 0, 0, 1);
+    width: 100%;
+    cursor: pointer;
 
-    width: auto;
-    height: auto;
-    display: flex;
-
-
-    .logo-link{
-        background: rgba(0,0,0, 1);
-        width: 100%;
-        cursor: pointer;
-
-        i{
-            color: rgba(255, 255, 255, 1);
-            font-size: 50px;
-        }
+    i {
+      color: rgba(255, 255, 255, 1);
+      font-size: 50px;
     }
+  }
 }
 
-.menu-container{
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  .global-menu {
     flex: 1;
+    align-self: stretch;
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
-    .global-menu{
-    
-        flex: 1;
-        align-self: stretch;
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-
-        .menu-items{
-            font-size: 24px;
-            cursor: pointer;
-            .menu-item{
-        
-                text-decoration: none;
-                color: rgba(255,255, 255, 1);
-            }
-        }
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    .menu-items {
+      font-size: 24px;
+      cursor: pointer;
+      .menu-item {
+        cursor: pointer;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 1);
+      }
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo-container {
+    .logo-link {
+      i {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .menu-container { 
+    .global-menu {
+  
+      .menu-items {
+        font-size: 16px;
+        cursor: pointer;
+        .menu-item {
+          cursor: pointer;
+          text-decoration: none;
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+  }
 }

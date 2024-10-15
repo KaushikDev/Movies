@@ -7,7 +7,7 @@ import {
   handleAddMovieToList,
   handleRemoveMovieFromList,
 } from "../../common/utils/utils";
-import { defaultImage } from "../../common/constants/constants";
+import { DEFAULT_IMAGE } from "../../common/constants/constants";
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const MovieCard = ({ movie }) => {
           backgroundImage: `url(${
             Poster !== "N/A"
               ? Poster
-              : defaultImage
+              : DEFAULT_IMAGE
           })`,
         }}
         onClick={() => navigate(`/movie/${imdbID}`)}

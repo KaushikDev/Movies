@@ -1,4 +1,5 @@
 .movieListContainer{
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     flex: 1 0 0;
@@ -6,4 +7,11 @@
     justify-content: center;
 
     
+}
+
+.noShow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

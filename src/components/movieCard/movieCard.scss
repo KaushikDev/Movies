@@ -6,9 +6,6 @@
     &:hover{
         box-shadow: 8px 8px 4px rgba(0,0,0, 1);
         cursor: pointer;
-        .movieCard__sideActionPanel{
-            display: flex;
-        }
     }
 }
 .movieCard{
@@ -20,12 +17,13 @@
 
 .movieCard__sideActionPanel{
     position: absolute;
-    display: none;
+    display: flex;
     top: 0;
     bottom: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.5);
-    padding: 0.25em;
+    left: 75%;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.05em;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;

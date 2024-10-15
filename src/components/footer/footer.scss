@@ -1,8 +1,8 @@
 .globalFooter {
+  position: sticky;
   width: calc(100% - 2em);
   background: rgba(0, 0, 0, 1);
   padding: 1em;
-  position: absolute;
   top: auto;
   bottom: 0 !important;
   z-index: 99;

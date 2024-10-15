@@ -1,11 +1,24 @@
-.inputSearchField{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
+.inputSearchField {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.fa-magnifying-glass{
-    font-size: 16px;
-    cursor: default;
+input {
+  border: none;
+  font-size: 24px;
+  &:focus {
+    outline: none;
+  }
+}
+.inputSearchFieldWrapper {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0;
+}
+
+.fa-magnifying-glass {
+  font-size: 16px;
+  cursor: pointer;
 }
