@@ -4,7 +4,7 @@ import "./goHome.scss";
 
 const GoHome = () => {
   return (
-    <Link className="HOME_LINK" to="">
+    <Link className="HOME_LINK" to="/">
       Click to go <i className="fa-solid fa-house-chimney"></i>
     </Link>
   );
