@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../common/store/Store";
 import { BASE_URL, MOVIE_API_KEY } from "../../common/apis/movieApi";
-import { defaultImage } from "../../common/constants/constants";
+import { DEFAULT_IMAGE } from "../../common/constants/constants";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -25,7 +25,7 @@ const MovieDetail = () => {
         console.log(err);
         setCurrentMovie({});
       });
-  }, [imdbID, setCurrentMovie]);
+  }, []);
 
   return (
     <div className="movieDetailContainer">
@@ -33,7 +33,7 @@ const MovieDetail = () => {
         <>
           <div
             className="moviePoster"
-            style={{ backgroundImage: `url(${currentMovie.Poster !== "N/A" ? currentMovie.Poster : defaultImage})` }}
+            style={{ backgroundImage: `url(${currentMovie.Poster !== "N/A" ? currentMovie.Poster : DEFAULT_IMAGE})` }}
           ></div>
           <div className="movieDetails">
             <h1 className="movieDetails__title">{currentMovie.Title}</h1>
@@ -61,7 +61,7 @@ const MovieDetail = () => {
           </div>
         </>
       ) : (
-        <h1>Whoops! No movie was found!</h1>
+        <h1>Whoopsie Daisy! No movie was found!</h1>
       )}
     </div>
   );

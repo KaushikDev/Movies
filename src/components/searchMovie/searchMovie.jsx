@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL, MOVIE_API_KEY } from "../../common/apis/movieApi";
 import { StoreContext } from "../../common/store/Store";
@@ -25,21 +25,35 @@ const SearchMovie = ({ searchTerm }) => {
       .catch((err) => console.log(err));
   };
 
+  useEffect(() => {}, []);
+
   return (
     <>
       <form onSubmit={(e) => handleMovieSearch(e)}>
         <div className="searchForm">
           <div className="inputSearchField">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input
-              id="searchField"
-              type="text"
-              value={movieTitleToSearchFor}
-              placeholder="search a movie"
-              onChange={(e) => setMovieTitleForSearchFor(e.target.value)}
-            />
-            {searchTerm ? <><h5>Previously searched for:</h5>
-            <span>"{searchTerm}"</span></> : null}
+            <div className="inputSearchFieldWrapper">
+              <input
+                id="searchField"
+                type="text"
+                value={movieTitleToSearchFor}
+                placeholder="Search a movie title"
+                onChange={(e) => setMovieTitleForSearchFor(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" ? handleMovieSearch(e) : null
+                }
+              />
+              <i
+                className="fa-solid fa-magnifying-glass"
+                onClick={(e) => handleMovieSearch(e)}
+              ></i>
+            </div>
+
+            {searchTerm ? (
+              <>
+                <h5>Last searched movie : "{searchTerm}"</h5>
+              </>
+            ) : null}
           </div>
         </div>
       </form>
