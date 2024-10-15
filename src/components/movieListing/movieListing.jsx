@@ -7,7 +7,6 @@ import GoHome from "../goHome/goHome";
 
 const MovieListing = ({ movies, message }) => {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <div className="movieListContainer">
       {movies && movies.length ? (

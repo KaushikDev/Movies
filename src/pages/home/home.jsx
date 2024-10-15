@@ -11,9 +11,9 @@ const Home = () => {
 
   return (
     <div className="homeContainer">
-      <h1>Your Personal Movie Library</h1>
+      <h1>Movie Library</h1>
       <SearchMovie searchTerm={searchedMovie}/>
-      <MovieListing movies={movies} message={`${message} Please try again.`} />
+      <MovieListing movies={movies} message={`${message}`} />
     </div>
   );
 };

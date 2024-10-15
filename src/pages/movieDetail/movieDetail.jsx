@@ -25,7 +25,7 @@ const MovieDetail = () => {
         console.log(err);
         setCurrentMovie({});
       });
-  }, []);
+  });
 
   return (
     <div className="movieDetailContainer">
