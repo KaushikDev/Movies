@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { BASE_URL, MOVIE_API_KEY } from "../../common/apis/movieApi";
 import { StoreContext } from "../../common/store/Store";
@@ -24,8 +24,6 @@ const SearchMovie = ({ searchTerm }) => {
       })
       .catch((err) => console.log(err));
   };
-
-  useEffect(() => {}, []);
 
   return (
     <>

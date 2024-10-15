@@ -2,7 +2,7 @@ export const initialState = {
   search: {
     movies: [],
     searchedMovie: "",
-    message: "You haven't searched any movie yet!!",
+    message: `Searched movies will appear here.`,
   },
   favorites: [],
   watchlist: [],

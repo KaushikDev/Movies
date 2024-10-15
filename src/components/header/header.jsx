@@ -6,7 +6,7 @@ const Header = () => (
   <header className="globalHeader">
     <div className="logo-container">
       <Link className="logo-link" to="/">
-        <i class="fa-solid fa-compact-disc"></i>
+        <i className="fa-solid fa-compact-disc"></i>
       </Link>
     </div>
     <div className="menu-container">

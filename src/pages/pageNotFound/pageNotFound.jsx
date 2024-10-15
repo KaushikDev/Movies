@@ -4,8 +4,8 @@ import GoHome from "../../components/goHome/goHome";
 
 const PageNotFound = () => (
   <div className="pageNotFound">
-    <i class="fa-regular fa-face-grin-tongue"></i>Sorry, we haven't built this
-    page yet.
+    <i className="fa-regular fa-face-grin-tongue"></i>Sorry, we haven't built
+    this page yet.
     <GoHome />
   </div>
 );
