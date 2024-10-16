@@ -40,10 +40,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    .menu-items {
+    .menuItems {
       font-size: 24px;
       cursor: pointer;
-      .menu-item {
+      .menuItem {
+        cursor: pointer;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 1);
+      }
+      .menuItemSelected {
+        font-weight: bold;
         cursor: pointer;
         text-decoration: none;
         color: rgba(255, 255, 255, 1);
