@@ -6,7 +6,7 @@ const Footer = () => (
   <footer className="globalFooter">
     <h5>
       &copy; {new Date().getFullYear()}{" "}
-      <Link className="footerlink" to="kaushikdev.com">
+      <Link className="footerlink"  target="_blank"  to="https://kaushikdev.com">
         kaushikDev
       </Link>
       . All rights reserved.
